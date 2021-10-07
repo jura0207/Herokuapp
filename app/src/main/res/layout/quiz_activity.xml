@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quiz title"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -30,16 +31,16 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="117dp"
-            android:layout_height="116dp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/quizTitle"
-            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="@+id/quizTitle"
             app:layout_constraintTop_toBottomOf="@+id/quizTitle"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintVertical_bias="0.086"
             app:srcCompat="@drawable/myplaceholderimage" />
 
         <Button
@@ -57,66 +58,70 @@
 
     <TextView
         android:id="@+id/QuestionTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="307dp"
+        android:layout_height="70dp"
         android:text="First question"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.148" />
+        app:layout_constraintVertical_bias="0.098" />
 
     <Button
         android:id="@+id/quizAnswer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
         android:layout_marginTop="40dp"
         android:onClick="btnPressed1"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/QuestionTV"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/quizAnswer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
         android:layout_marginTop="40dp"
         android:onClick="btnPressed2"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/quizAnswer1"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/QuestionTV"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/quizAnswer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
         android:layout_marginTop="48dp"
         android:onClick="btnPressed3"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/quizAnswer1"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quizAnswer1"
-        app:layout_constraintVertical_bias="0.081" />
+        app:layout_constraintVertical_bias="0.163" />
 
     <Button
         android:id="@+id/quizAnswer4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="48dp"
         android:onClick="btnPressed4"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/quizAnswer2"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quizAnswer2"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintVertical_bias="0.163" />
 </androidx.constraintlayout.widget.ConstraintLayout>

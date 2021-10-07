@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,9 +73,7 @@ public class QuizActivity extends AppCompatActivity {
         TextView TVTitle = (TextView) findViewById(R.id.quizTitle);
 
         ImageView quizPicture = (ImageView) findViewById(R.id.imageView2);
-
-
-
+        Picasso.get().load(image).fit().centerCrop().into(quizPicture);
 
 
         /**
@@ -91,10 +92,6 @@ public class QuizActivity extends AppCompatActivity {
         }catch (IOException e) {
             e.printStackTrace();
         } */
-
-
-
-
 
         TextView TVQuestion = (TextView) findViewById(R.id.QuestionTV);
         Button btn1 = (Button) findViewById(R.id.quizAnswer1);
@@ -138,30 +135,30 @@ public class QuizActivity extends AppCompatActivity {
         switch(btnNumber){
             case 0:
                 if (btnNumber==pitanja.get(0).getCorrect_answer()){
-                    btn1.setBackgroundColor(-16711936);
+                    btn1.setBackgroundColor(0x4F00FF00);
                 } else{
-                    btn1.setBackgroundColor(-65536);
+                    btn1.setBackgroundColor(0x4FFF0000);
                 }
                 break;
             case 1:
                 if (btnNumber==pitanja.get(0).getCorrect_answer()){
-                    btn2.setBackgroundColor(-16711936);
+                    btn2.setBackgroundColor(0x4F00FF00);
                 } else{
-                    btn2.setBackgroundColor(-65536);
+                    btn2.setBackgroundColor(0x4FFF0000);
                 }
                 break;
             case 2:
                 if (btnNumber==pitanja.get(0).getCorrect_answer()){
-                    btn3.setBackgroundColor(-16711936);
+                    btn3.setBackgroundColor(0x4F00FF00);
                 } else{
-                    btn3.setBackgroundColor(-65536);
+                    btn3.setBackgroundColor(0x4FFF0000);
                 }
                 break;
             case 3:
                 if (btnNumber==pitanja.get(0).getCorrect_answer()){
-                    btn4.setBackgroundColor(-16711936);
+                    btn4.setBackgroundColor(0x4F00FF00);
                 } else{
-                    btn4.setBackgroundColor(-65536);
+                    btn4.setBackgroundColor(0x4FFF0000);
                 }
                 break;
         }
@@ -200,6 +197,4 @@ public class QuizActivity extends AppCompatActivity {
             }
         }, 3000);   //3 seconds
     }
-
-
 }

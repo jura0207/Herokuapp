@@ -7,7 +7,7 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto">
 
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/imageViewDiff1"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -23,7 +23,7 @@
         fresco:placeholderImage="@drawable/myplaceholderimage"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/imageViewDiff2"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -39,7 +39,7 @@
         fresco:placeholderImage="@drawable/myplaceholderimage"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/imageViewDiff3"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -55,7 +55,7 @@
         fresco:placeholderImage="@drawable/myplaceholderimage"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/imageView1"
         android:layout_width="128dp"
         android:layout_height="128dp"

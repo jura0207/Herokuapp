@@ -1,10 +1,19 @@
 package com.flabbergast.herokuapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 import java.io.BufferedReader;
@@ -19,23 +28,58 @@ import org.json.*;
 public class MainActivity extends AppCompatActivity {
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
         setContentView(R.layout.activity_main);
         ListView mListView = (ListView) findViewById(R.id.listView1);
-        ArrayList<Quiz> kvizovi = new ArrayList<Quiz>();
+        final ArrayList<Quiz>[] kvizovi = new ArrayList[]{new ArrayList<Quiz>()};
+        /**
         try {
-            /**Loads parsed data from API https://iosquiz.herokuapp.com/api/quizzes
-            into linked list kvizovi*/
+            //Loads parsed data from API https://iosquiz.herokuapp.com/api/quizzes
+            //into linked list kvizovi
             kvizovi = parseData(loadDataTest());
+
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         QuizListAdapter adapter = new QuizListAdapter(findViewById(android.R.id.content).getRootView(),this, R.layout.quiz_layout, kvizovi);
-        mListView.setAdapter(adapter);
+        mListView.setAdapter(adapter); */
+
+        final String[] str = new String[1];
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="https://iosquiz.herokuapp.com/api/quizzes";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Display the first 500 characters of the response string.
+                        //textView.setText("Response is: "+ response.substring(0,500));
+                        str[0] = response.toString();
+                        try {
+                            kvizovi[0] = parseData(str[0]);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        QuizListAdapter adapter = new QuizListAdapter(findViewById(android.R.id.content).getRootView(),MainActivity.this, R.layout.quiz_layout, kvizovi[0]);
+                        mListView.setAdapter(adapter);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textView.setText("That didn't work!");
+            }
+        });
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+
+
     }
 
 
@@ -132,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
         //msg.setText(kvizovi.get(2).getCategory());
         return kvizovi;
     }
+
+
 
 
 }

@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.content.Context;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -55,44 +57,40 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
         tvDescription.setText(description);
 
 
-        //Sets image
+        //Sets image using Picasso
 
-        SimpleDraweeView draweeView = (SimpleDraweeView) convertView.findViewById(R.id.imageView1);
-        Uri imageUri = Uri.parse(image);
-        draweeView.setImageURI(imageUri);
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView1);
+        Picasso.get().load(image).into(imageView);
 
         //Sets difficulty
 
-        SimpleDraweeView draweeViewDifficulty1 = (SimpleDraweeView) convertView.findViewById(R.id.imageViewDiff1);
-        draweeViewDifficulty1.setActualImageResource(R.drawable.diff1);
-        SimpleDraweeView draweeViewDifficulty2 = (SimpleDraweeView) convertView.findViewById(R.id.imageViewDiff2);
-        draweeViewDifficulty2.setActualImageResource(R.drawable.diff1);
-        SimpleDraweeView draweeViewDifficulty3 = (SimpleDraweeView) convertView.findViewById(R.id.imageViewDiff3);
-        draweeViewDifficulty3.setActualImageResource(R.drawable.diff1);
+        ImageView imageViewDifficulty1 = (ImageView) convertView.findViewById(R.id.imageViewDiff1);
+        imageViewDifficulty1.setImageResource(R.drawable.diff1);
+        ImageView imageViewDifficulty2 = (ImageView) convertView.findViewById(R.id.imageViewDiff2);
+        imageViewDifficulty2.setImageResource(R.drawable.diff1);
+        ImageView imageViewDifficulty3 = (ImageView) convertView.findViewById(R.id.imageViewDiff3);
+        imageViewDifficulty3.setImageResource(R.drawable.diff1);
 
         switch (level){
-            case 1: draweeViewDifficulty1.setVisibility(View.VISIBLE);
+            case 1: imageViewDifficulty1.setVisibility(View.VISIBLE);
                     break;
-            case 2: draweeViewDifficulty1.setVisibility(View.VISIBLE);
-                    draweeViewDifficulty2.setVisibility(View.VISIBLE);
+            case 2: imageViewDifficulty1.setVisibility(View.VISIBLE);
+                    imageViewDifficulty2.setVisibility(View.VISIBLE);
                     break;
-            case 3: draweeViewDifficulty1.setVisibility(View.VISIBLE);
-                    draweeViewDifficulty2.setVisibility(View.VISIBLE);
-                    draweeViewDifficulty3.setVisibility(View.VISIBLE);
+            case 3: imageViewDifficulty1.setVisibility(View.VISIBLE);
+                    imageViewDifficulty2.setVisibility(View.VISIBLE);
+                    imageViewDifficulty3.setVisibility(View.VISIBLE);
                     break;
         }
 
         convertView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View arg0, MotionEvent arg1) {
-                tvTitle.setText("clicked");
                 Intent myIntent = new Intent(mContext, QuizActivity.class);
                 myIntent.putExtra("title", title);
                 myIntent.putExtra("image", image);
                 myIntent.putExtra("questions", questions);
-                //myIntent.putParcelableArrayListExtra("questions", questions);
                 mContext.startActivity(myIntent);
-                //MainActivity.setQuiz(view, title, image, questions);
                 return true;//always return true to consume event
             }
 
