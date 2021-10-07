@@ -4,6 +4,7 @@
     <!-- Permission for internet -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Permission for Network State -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"

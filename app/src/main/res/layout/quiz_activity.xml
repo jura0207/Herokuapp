@@ -32,6 +32,8 @@
             android:id="@+id/imageView2"
             android:layout_width="117dp"
             android:layout_height="116dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/quizTitle"
             app:layout_constraintHorizontal_bias="0.491"

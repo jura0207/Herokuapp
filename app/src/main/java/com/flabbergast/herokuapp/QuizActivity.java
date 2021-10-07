@@ -2,16 +2,26 @@ package com.flabbergast.herokuapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class QuizActivity extends AppCompatActivity {
@@ -58,6 +68,34 @@ public class QuizActivity extends AppCompatActivity {
         //Now comes for initialization of the labels and buttons
 
         TextView TVTitle = (TextView) findViewById(R.id.quizTitle);
+
+        ImageView quizPicture = (ImageView) findViewById(R.id.imageView2);
+
+
+
+
+
+        /**
+        try{
+            Bitmap bm = null;
+            URL aURL = new URL(image);
+            HttpURLConnection conn = (HttpURLConnection) aURL.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream(); //crashes here
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+            quizPicture.setImageBitmap(bm);
+            conn.disconnect();
+        }catch (IOException e) {
+            e.printStackTrace();
+        } */
+
+
+
+
+
         TextView TVQuestion = (TextView) findViewById(R.id.QuestionTV);
         Button btn1 = (Button) findViewById(R.id.quizAnswer1);
         Button btn2 = (Button) findViewById(R.id.quizAnswer2);
@@ -127,23 +165,34 @@ public class QuizActivity extends AppCompatActivity {
                 }
                 break;
         }
+
+        //Disables buttons
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
+
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
                 // yourMethod();
-                btn1.setText("TEST");
                 pitanja.remove(0);
                 TextView TVQuestion = (TextView) findViewById(R.id.QuestionTV);
                 TVQuestion.setText(pitanja.get(0).getQuestion());
                 try {
                     btn1.setText(pitanja.get(0).getAnswers().getString(0));
                     btn1.setBackgroundColor(-3355444);
+                    btn1.setEnabled(true);
                     btn2.setText(pitanja.get(0).getAnswers().getString(1));
                     btn2.setBackgroundColor(-3355444);
+                    btn2.setEnabled(true);
                     btn3.setText(pitanja.get(0).getAnswers().getString(2));
                     btn3.setBackgroundColor(-3355444);
+                    btn3.setEnabled(true);
                     btn4.setText(pitanja.get(0).getAnswers().getString(3));
                     btn4.setBackgroundColor(-3355444);
+                    btn4.setEnabled(true);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
