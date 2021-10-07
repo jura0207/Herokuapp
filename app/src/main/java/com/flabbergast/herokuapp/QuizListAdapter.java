@@ -42,7 +42,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
         String category = getItem(position).getCategory();
         int level = getItem(position).getLevel();
         String image = getItem(position).getImage();
-        ArrayList<Question> questions = getItem(position).getQuestions();
+        String questions = getItem(position).getQuestions();
         Quiz quiz = new Quiz(id, title, description, category, level, image, questions);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
@@ -89,7 +89,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
                 Intent myIntent = new Intent(mContext, QuizActivity.class);
                 myIntent.putExtra("title", title);
                 myIntent.putExtra("image", image);
-                //myIntent.putExtra("questions", questions);
+                myIntent.putExtra("questions", questions);
                 //myIntent.putParcelableArrayListExtra("questions", questions);
                 mContext.startActivity(myIntent);
                 //MainActivity.setQuiz(view, title, image, questions);

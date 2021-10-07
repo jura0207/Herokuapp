@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
 
             //for a test this will be deactivated because questions will be parsed in quizActivity
+
+            /**
             for (int j = 0; j < nizPitanja.length(); j++){
                 //Parse through the questions
                 Question pitanje = new Question(nizPitanja.getJSONObject(j).getInt("id"),
@@ -113,6 +115,16 @@ public class MainActivity extends AppCompatActivity {
                     arr.getJSONObject(i).getInt("level"),
                     arr.getJSONObject(i).getString("image"),
                     pitanja);
+            kvizovi.add(kviz);
+        }*/
+
+            Quiz kviz = new Quiz(arr.getJSONObject(i).getInt("id"),
+                    arr.getJSONObject(i).getString("title"),
+                    arr.getJSONObject(i).getString("description"),
+                    arr.getJSONObject(i).getString("category"),
+                    arr.getJSONObject(i).getInt("level"),
+                    arr.getJSONObject(i).getString("image"),
+                    arr.getJSONObject(i).getString("questions"));
             kvizovi.add(kviz);
         }
 

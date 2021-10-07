@@ -13,9 +13,9 @@ public class Quiz implements Parcelable {
     private String category;
     private int level;
     private String image;
-    private ArrayList<Question> questions;
+    private String questions;
 
-    public Quiz(int id, String title, String description, String category, int level, String image, ArrayList<Question> questions) {
+    public Quiz(int id, String title, String description, String category, int level, String image, String questions) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -32,7 +32,7 @@ public class Quiz implements Parcelable {
         category = in.readString();
         level = in.readInt();
         image = in.readString();
-        questions = in.createTypedArrayList(Question.CREATOR);
+        questions = in.readString();
     }
 
     public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
@@ -95,11 +95,11 @@ public class Quiz implements Parcelable {
         this.image = image;
     }
 
-    public ArrayList<Question> getQuestions() {
+    public String getQuestions() {
         return questions;
     }
 
-    public void setQuestions(ArrayList<Question> questions) {
+    public void setQuestions(String questions) {
         this.questions = questions;
     }
 
@@ -116,6 +116,6 @@ public class Quiz implements Parcelable {
         parcel.writeString(category);
         parcel.writeInt(level);
         parcel.writeString(image);
-        parcel.writeTypedList(questions);
+        parcel.writeString(questions);
     }
 }

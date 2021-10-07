@@ -54,7 +54,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/firstQuestionTV"
+        android:id="@+id/QuestionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="First question"
@@ -69,12 +69,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:onClick="btnPressed1"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.25"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstQuestionTV"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTV"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -82,11 +83,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:onClick="btnPressed2"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/quizAnswer1"
-        app:layout_constraintTop_toBottomOf="@+id/firstQuestionTV"
+        app:layout_constraintTop_toBottomOf="@+id/QuestionTV"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
@@ -94,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
+        android:onClick="btnPressed3"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/quizAnswer1"
@@ -106,6 +109,7 @@
         android:id="@+id/quizAnswer4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="btnPressed4"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
