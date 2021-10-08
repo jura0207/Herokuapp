@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -27,7 +28,7 @@ import java.util.LinkedList;
 import org.json.*;
 
 public class MainActivity extends AppCompatActivity {
-
+    public ArrayList<String> categoryList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Quiz>[] kvizovi = new ArrayList[]{new ArrayList<Quiz>()};
 
         final String[] str = new String[1];
+
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -58,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         QuizListAdapter adapter = new QuizListAdapter(findViewById(android.R.id.content).getRootView(),MainActivity.this, R.layout.quiz_layout, kvizovi[0]);
                         mListView.setAdapter(adapter);
+
                     }
                 }, new Response.ErrorListener() {
             @Override

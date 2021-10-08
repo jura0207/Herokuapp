@@ -1,11 +1,9 @@
 package com.flabbergast.herokuapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.AsyncTask;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -17,14 +15,7 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class QuizActivity extends AppCompatActivity {
@@ -40,6 +31,11 @@ public class QuizActivity extends AppCompatActivity {
         String title = (String) getIntent().getSerializableExtra("title");
         String image = (String) getIntent().getSerializableExtra("image");
         String questions = (String) getIntent().getSerializableExtra("questions");
+        String color = (String) getIntent().getSerializableExtra("color");
+
+
+        ConstraintLayout constraintLayoutQuiz = (ConstraintLayout) findViewById(R.id.constraintLayoutQuiz);
+        constraintLayoutQuiz.setBackgroundColor(Color.parseColor(color));
 
         //Parse questions
 

@@ -1,6 +1,7 @@
 package com.flabbergast.herokuapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class QuizListAdapter extends ArrayAdapter<Quiz> {
 
@@ -27,6 +29,8 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
     private Context mContext;
     int mResource;
     View view;
+    private ArrayList<String> categories = new ArrayList<>();
+    private String color;
 
     public QuizListAdapter(View view, Context context, int resource, ArrayList<Quiz> kvizovi) {
         super(context, resource, kvizovi);
@@ -51,7 +55,24 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
 
         TextView tvTitle = (TextView) convertView.findViewById(R.id.textViewTitle);
         TextView tvDescription = (TextView) convertView.findViewById(R.id.textViewDescription);
-        //ImageView ivImage = (ImageView) convertView.findViewById(R.id.imageView);
+        TextView tvCategory = (TextView) convertView.findViewById(R.id.textViewCategory);
+
+        String tempColor = this.color;
+        //Sets background color
+        if (!this.categories.contains(category)){
+            this.categories.add(category);
+            tvCategory.setText(category);
+            tvCategory.setVisibility(View.VISIBLE);
+            Random random = new Random();
+            int nextInt = random.nextInt(0xffffff + 1);
+            String colorCode = String.format("%06x", nextInt);
+            String clr = ""+colorCode;
+            this.color = "#2F"+clr;
+            tempColor = "#2F"+clr;
+        }
+
+        convertView.setBackgroundColor(Color.parseColor(this.color));
+
 
         tvTitle.setText(title);
         tvDescription.setText(description);
@@ -83,6 +104,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
                     break;
         }
 
+        String finalTempColor = tempColor;
         convertView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View arg0, MotionEvent arg1) {
@@ -90,6 +112,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
                 myIntent.putExtra("title", title);
                 myIntent.putExtra("image", image);
                 myIntent.putExtra("questions", questions);
+                myIntent.putExtra("color", finalTempColor);
                 mContext.startActivity(myIntent);
                 return false;//always return true to consume event, but this opens two activities
             }
