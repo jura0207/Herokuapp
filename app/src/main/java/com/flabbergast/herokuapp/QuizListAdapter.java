@@ -60,7 +60,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
         //Sets image using Picasso
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView1);
-        Picasso.get().load(image).into(imageView);
+        Picasso.get().load(image).placeholder(R.drawable.myplaceholderimage).into(imageView);
 
         //Sets difficulty
 
@@ -91,7 +91,7 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
                 myIntent.putExtra("image", image);
                 myIntent.putExtra("questions", questions);
                 mContext.startActivity(myIntent);
-                return true;//always return true to consume event
+                return false;//always return true to consume event, but this opens two activities
             }
 
         });

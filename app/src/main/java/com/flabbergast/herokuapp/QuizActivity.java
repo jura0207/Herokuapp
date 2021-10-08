@@ -73,7 +73,7 @@ public class QuizActivity extends AppCompatActivity {
         TextView TVTitle = (TextView) findViewById(R.id.quizTitle);
 
         ImageView quizPicture = (ImageView) findViewById(R.id.imageView2);
-        Picasso.get().load(image).fit().centerCrop().into(quizPicture);
+        Picasso.get().load(image).placeholder(R.drawable.myplaceholderimage).fit().centerCrop().into(quizPicture);
 
 
         /**
