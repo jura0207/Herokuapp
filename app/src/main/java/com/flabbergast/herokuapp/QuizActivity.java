@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -68,32 +70,19 @@ public class QuizActivity extends AppCompatActivity {
 
         TextView TVTitle = (TextView) findViewById(R.id.quizTitle);
 
-        ImageView quizPicture = (ImageView) findViewById(R.id.imageView2);
-        Picasso.get().load(image).placeholder(R.drawable.myplaceholderimage).fit().centerCrop().into(quizPicture);
-
-
-        /**
-        try{
-            Bitmap bm = null;
-            URL aURL = new URL(image);
-            HttpURLConnection conn = (HttpURLConnection) aURL.openConnection();
-            conn.connect();
-            InputStream is = conn.getInputStream(); //crashes here
-            BufferedInputStream bis = new BufferedInputStream(is);
-            bm = BitmapFactory.decodeStream(bis);
-            bis.close();
-            is.close();
-            quizPicture.setImageBitmap(bm);
-            conn.disconnect();
-        }catch (IOException e) {
-            e.printStackTrace();
-        } */
-
         TextView TVQuestion = (TextView) findViewById(R.id.QuestionTV);
         Button btn1 = (Button) findViewById(R.id.quizAnswer1);
         Button btn2 = (Button) findViewById(R.id.quizAnswer2);
         Button btn3 = (Button) findViewById(R.id.quizAnswer3);
         Button btn4 = (Button) findViewById(R.id.quizAnswer4);
+
+
+        //Sets up image
+        //TODO fix it
+        ImageView quizPicture = (ImageView) findViewById(R.id.imageView2);
+        Picasso.get().setLoggingEnabled(true);
+        Picasso.get().load(image).placeholder(R.drawable.myplaceholderimage).fit().centerCrop().into(quizPicture); //getting 503 error - service unavailable
+
 
         //Adds quiz and questions
         TVTitle.setText(title);

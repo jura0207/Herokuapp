@@ -2,8 +2,6 @@ package com.flabbergast.herokuapp;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,11 +14,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class QuizListAdapter extends ArrayAdapter<Quiz> {
@@ -57,8 +53,9 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
         TextView tvDescription = (TextView) convertView.findViewById(R.id.textViewDescription);
         TextView tvCategory = (TextView) convertView.findViewById(R.id.textViewCategory);
 
-        String tempColor = this.color;
+
         //Sets background color
+        String tempColor = this.color;
         if (!this.categories.contains(category)){
             this.categories.add(category);
             tvCategory.setText(category);
@@ -79,9 +76,9 @@ public class QuizListAdapter extends ArrayAdapter<Quiz> {
 
 
         //Sets image using Picasso
-
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView1);
         Picasso.get().load(image).placeholder(R.drawable.myplaceholderimage).into(imageView);
+
 
         //Sets difficulty
 

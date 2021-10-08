@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ListView mListView = (ListView) findViewById(R.id.listView1);
         final ArrayList<Quiz>[] kvizovi = new ArrayList[]{new ArrayList<Quiz>()};
-
         final String[] str = new String[1];
-
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
